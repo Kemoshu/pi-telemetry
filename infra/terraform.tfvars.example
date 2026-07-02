@@ -1,0 +1,10 @@
+# Copy to terraform.tfvars and fill in. terraform.tfvars is gitignored.
+aws_region      = "us-east-1"
+device_id       = "pi5-living-room"
+device_csr_path = "../certs/device.csr"
+
+# Optional overrides
+# ttl_days                 = 14
+# cpu_temp_threshold_c     = 75
+# enable_temp_alarm        = true
+# alarm_email              = "you@example.com"

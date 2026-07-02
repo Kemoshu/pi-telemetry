@@ -1,0 +1,6 @@
+# Copy to backend.hcl and fill in. backend.hcl is gitignored.
+bucket         = "your-terraform-state-bucket"
+key            = "pi-telemetry/terraform.tfstate"
+region         = "us-east-1"
+dynamodb_table = "your-terraform-lock-table"
+encrypt        = true
