@@ -1,0 +1,27 @@
+# Pi telemetry agent configuration.
+# Copy to config.yaml and fill in your values. Every field can also be set
+# via environment variable with the PI_TELEMETRY_ prefix, for example
+# PI_TELEMETRY_MQTT_ENDPOINT. Environment variables win over this file.
+
+# Defaults to the hostname when omitted.
+device_id: pi5-living-room
+
+# Seconds between telemetry samples.
+interval_seconds: 60
+
+# stdout: print JSON lines locally (no AWS needed).
+# mqtt: publish to AWS IoT Core over TLS.
+publisher: mqtt
+
+mqtt:
+  # From: aws iot describe-endpoint --endpoint-type iot:Data-ATS
+  endpoint: xxxxxxxxxxxxxx-ats.iot.us-east-1.amazonaws.com
+  port: 8883
+  # Defaults to telemetry/<device_id> when omitted. Must stay in sync with
+  # the IoT policy and rule created by the Terraform in /infra.
+  # topic: telemetry/pi5-living-room
+  ca_cert: /etc/pi-telemetry/certs/AmazonRootCA1.pem
+  device_cert: /etc/pi-telemetry/certs/device.pem.crt
+  private_key: /etc/pi-telemetry/certs/private.pem.key
+  # Defaults to device_id. Must match the IoT policy's client id condition.
+  # client_id: pi5-living-room

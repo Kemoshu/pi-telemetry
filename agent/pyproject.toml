@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pi-telemetry-agent"
+version = "0.1.0"
+description = "Raspberry Pi system telemetry agent publishing to AWS IoT Core over MQTT"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Kevin Pierce Ramos", email = "ramosk.dev@gmail.com" }]
+dependencies = [
+    "psutil>=5.9",
+    "paho-mqtt>=2.0",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.4"]
+
+[project.scripts]
+pi-telemetry-agent = "pi_telemetry_agent.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["pi_telemetry_agent*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

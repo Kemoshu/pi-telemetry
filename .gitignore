@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+
+# Secrets and certificates: never commit these
+*.pem
+*.crt
+*.key
+*.csr
+certs/
+
+# Terraform
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.*
+*.tfvars
+!*.tfvars.example
+backend.hcl
+lambda_build/
+*.zip
+
+# Local config
+config.yaml
+.env

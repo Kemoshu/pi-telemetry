@@ -1,0 +1,28 @@
+# Install:
+#   sudo cp pi-telemetry-agent.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now pi-telemetry-agent
+# Logs: journalctl -u pi-telemetry-agent -f
+
+[Unit]
+Description=Raspberry Pi telemetry agent (system metrics to AWS IoT Core)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=kpcr
+Group=kpcr
+ExecStart=/home/kpcr/pi-telemetry/.venv/bin/python -m pi_telemetry_agent --config /etc/pi-telemetry/config.yaml
+Restart=on-failure
+RestartSec=10
+
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=true
+ReadOnlyPaths=/etc/pi-telemetry
+
+[Install]
+WantedBy=multi-user.target
