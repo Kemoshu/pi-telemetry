@@ -21,3 +21,11 @@ output "telemetry_table_name" {
 output "anomalies_table_name" {
   value = aws_dynamodb_table.anomalies.name
 }
+
+output "lambda_function_name" {
+  value = aws_lambda_function.processor.function_name
+}
+
+output "iot_rule_name" {
+  value = aws_iot_topic_rule.telemetry.name
+}

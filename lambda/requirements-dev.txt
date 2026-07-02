@@ -1,0 +1,5 @@
+# Test dependencies only. The function itself uses just boto3, which the
+# Lambda Python runtime provides, so the deployment package is source-only.
+boto3>=1.34
+moto[dynamodb]>=5.0
+pytest>=8.0
