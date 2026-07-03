@@ -1,5 +1,7 @@
 # pi-telemetry
 
+[![CI](https://github.com/Kemoshu/pi-telemetry/actions/workflows/ci.yml/badge.svg)](https://github.com/Kemoshu/pi-telemetry/actions/workflows/ci.yml)
+
 A Raspberry Pi 5 telemetry pipeline on AWS. A Python agent on the Pi samples
 CPU load, memory, disk, and CPU temperature, publishes JSON over MQTT with
 mutual TLS to AWS IoT Core, and an IoT rule fans each message out to DynamoDB
@@ -12,6 +14,9 @@ Solutions Architect Associate exam. It runs on real hardware: the agent reads
 the Pi's actual thermal zone, not synthetic values.
 
 ## Architecture
+
+For a component-by-component walkthrough of how everything works and why,
+with study notes per section, see [docs/how-it-works.md](docs/how-it-works.md).
 
 ```mermaid
 flowchart LR
